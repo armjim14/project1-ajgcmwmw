@@ -3,3 +3,11 @@ $("body").on("click", "#submit", function(){
     console.log(birthdate);
 })
 
+
+$("body").on("click", "#usgsCard", function(){
+    // https://earthquake.usgs.gov/fdsnws/event/1/#parameters
+    var url = 'https://earthquake.usgs.gov/fdsnws/event/1/[METHOD[?PARAMETERS]'
+})
+function earthquakes(date){
+
+}
