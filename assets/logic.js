@@ -3,6 +3,7 @@ var birthdate;
 $("body").on("click", "#submit", function(){
     birthdate = $("form input").val();
     console.log(birthdate);
+    console.log(moment(birthdate).add(1, 'days').format('YYYY-MM-DD'));
 })
 
 
