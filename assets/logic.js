@@ -18,7 +18,7 @@ function earthquakes(date){
     $("#ajaxResults").css("display", "block");
     $("#buttons_backandreset").css("display", "block");
 
-    var eqTable = $("<table class='mdl-data-table mdl-js-data-table'>");
+    var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
     var eqTableHeaders = $("<thead><tr><th class='mdl-data-table__cell--non-numeric'>Time</th><th class='mdl-data-table__cell--non-numeric'>Location</th><th class='mdl-data-table__cell--non-numeric'>Magnitude</th><th class='mdl-data-table__cell--non-numeric'>Type</th><th class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
     var eqTableBody = $("<tbody>");
 
