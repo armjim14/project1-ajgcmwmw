@@ -10,9 +10,15 @@ $("#submit").on("click", function(){
         url: link,
         method: "GET"
     }).then(function(res){
-        var info = res.near_earth_objects[birthdate][0].close_approach_data[0];
-        var miss = Math.floor(info.miss_distance.miles) + " Miles";
-        var speed = Math.ceil(info.relative_velocity.miles_per_hour) + " MPH";
+        console.log(res);
+        var info = res.near_earth_objects[birthdate][0];
+
+        //missed distance
+        var miss = Math.floor(info.close_approach_data[0].miss_distance.miles) + " Miles";
+
+        //speed of it
+        var speed = Math.ceil(info.close_approach_data[0].relative_velocity.miles_per_hour) + " MPH";
+
         // Miles from earth to sun is 93 Million Miles
         console.log(speed);
         console.log(miss);
