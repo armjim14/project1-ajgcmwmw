@@ -29,7 +29,6 @@ body {
 }
 #cards {
     display: none;
-    background: slategray;
     color: forestgreen;
     width: 100%;
 }
