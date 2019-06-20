@@ -1,0 +1,15 @@
+.mdl-card {
+    cursor: pointer;
+}
+
+#cards {
+    display: none;
+}
+
+#back {
+    display: none;
+}
+
+#reset {
+    display: none;
+}
