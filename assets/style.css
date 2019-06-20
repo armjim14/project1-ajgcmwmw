@@ -31,6 +31,7 @@ body {
     display: none;
     background: slategray;
     color: forestgreen;
+    width: 100%;
 }
 
 #back {
@@ -39,4 +40,16 @@ body {
 
 #reset {
     display: none;
+}
+
+.cen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 32%;
+}
+
+.cen2 {
+    clear: both;
 }
