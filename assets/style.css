@@ -1,9 +1,36 @@
+@font-face {
+    font-family: Acme;
+    src: url('Acme-regular.ttf');
+}
+
+body {
+    font-family: Acme, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: url('stardust.png');
+    background-repeat: repeat;
+}
+
+#ajaxResults {
+    font-family: 'Times New Roman', Times, serif;
+    background: lightgray;
+    color: navy;
+    display: none;
+}
+#back, #reset{
+    background: midnightblue;
+    color: beige;
+}
 .mdl-card {
     cursor: pointer;
 }
 
+#bdayQuestion {
+    background: darkcyan;
+    color: lightcyan;
+}
 #cards {
     display: none;
+    background: slategray;
+    color: forestgreen;
 }
 
 #back {
