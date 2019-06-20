@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/material.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <style>
+        .cen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
     <script src="assets/jquery-3.4.1.min.js"></script>
     <script src="assets/moment.js"></script>
 </head>
@@ -35,7 +42,7 @@
     </div>
     <!-- cards for each API -->
     <div class="mdl-grid center-items" id="cards">
-        <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-cell mdl-cell--4-col cen">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="moviesCard">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Movies</h2>
@@ -51,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-cell mdl-cell--4-col cen">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="usgsCard">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Earthquake</h2>
@@ -67,14 +74,16 @@
                 </div>
             </div>
         </div>
-        <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-cell mdl-cell--4-col cen">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="nasaCard">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Asteroids</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, 
+                    perferendis ducimus. Ipsam exercitationem sint distinctio assumenda in
+                    nihil nostrum? Pariatur consequatur ipsa soluta.
+                    Laborum, quia. Neque veniam quae ducimus placeat?
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -84,7 +93,6 @@
             </div>
         </div>
     </div>
-
     <!-- buttons (back and reset) -->
     <div class="mdl-grid mdl-typography--text-center" id="buttons_backandreset">
         <div class="mdl-cell mdl-cell--6-col">
