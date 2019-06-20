@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project 1 Website</title>
+    <link rel="stylesheet" href="assets/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/material.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <style>
+        .cen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script src="assets/jquery-3.4.1.min.js"></script>
+    <script src="assets/moment.js"></script>
+</head>
+
+<body>
+    <!-- form -->
+    <div class="mdl-grid mdl-typography--text-center" id="bdayQuestion">
+        <div class="mdl-cell mdl-cell--12-col">
+            <h1>Enter your birthday</h1>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col">
+            <form>
+                <input class="mdl-textfield__input mdl-typography--text-center" type="date"
+                    placeholder="Enter your birthday">
+            </form>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col">
+            <button class="mdl-button" type="submit" id="submit">Submit</button>
+        </div>
+    </div>
+
+    <!-- AJAX part -->
+    <div class="mdl-grid mdl-typography--text-center" id="ajaxResults">
+    </div>
+    <!-- cards for each API -->
+    <div class="mdl-grid center-items" id="cards">
+        <div class="mdl-cell mdl-cell--4-col cen">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="moviesCard">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Movies</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Show Results
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col cen">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="usgsCard">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Earthquake</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Show Results
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col cen">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="nasaCard">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Asteroids</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, 
+                    perferendis ducimus. Ipsam exercitationem sint distinctio assumenda in
+                    nihil nostrum? Pariatur consequatur ipsa soluta.
+                    Laborum, quia. Neque veniam quae ducimus placeat?
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Show Results
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- buttons (back and reset) -->
+    <div class="mdl-grid mdl-typography--text-center" id="buttons_backandreset">
+        <div class="mdl-cell mdl-cell--6-col">
+            <button class="mdl-button" id="back">Back</button>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <button class="mdl-button" id="reset">Reset</button>
+        </div>
+    </div>
+
+<script src="assets/logic.js"></script>
+</body>
+
+</html>
