@@ -8,7 +8,6 @@ $("body").on("click", "#submit", function () {
     $("#reset").css("display", "block");
 })
 
-
 $("body").on("click", "#usgsCard", function () {
     earthquakes(birthdate);
 })
@@ -61,7 +60,7 @@ function earthquakes(date) {
     var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;    
   
     var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Were we in danger?</th></tr></thead>")
+    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Were we in danger?</th></tr></thead>")
     var tbody = $("<tbody id='nasatable'>")
     $("#ajaxResults").append(table);
     table.append(tableH);
@@ -81,9 +80,9 @@ function earthquakes(date) {
             // were we in danger?
             var danger = info.is_potentially_hazardous_asteroid;
             if ( danger == false ){
-                danger = "No"
+                danger = "No";
             } else {
-                danger = "Yes"
+                danger = "Yes";
             }
 
             //miles in diameter
