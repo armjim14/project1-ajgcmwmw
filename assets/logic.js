@@ -51,12 +51,12 @@ function earthquakes(date) {
     })
 }
 
- $("#nasaCard").on("click", function(){
+ $("body").on("click", "#nasaCard", function(){
     $("#bdayQuestion").css("display", "none");
     $("#cards").css("display", "none");
     $("#ajaxResults").css("display", "block");
     $("#back").css("display", "block");
-    $(#reset).css("display", "block");
+    $('#reset').css("display", "block");
     var api = "nzDTlixflJIZcchogN9lZyKGc6qW2V0ElS9qHvAD"
     var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;    
   
@@ -99,6 +99,7 @@ function earthquakes(date) {
             $("#nasatable").append(newTr);
         }
     })
+})
 
 
 $("body").on("click", "#back", function(){
