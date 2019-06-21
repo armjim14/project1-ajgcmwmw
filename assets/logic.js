@@ -3,9 +3,28 @@ var items = [];
 
 $("body").on("click", "#submit", function () {
     birthdate = $("form input").val();
-    $("#bdayQuestion").css("display", "none");
-    $('#cards').css('display', 'block');
-    $("#reset").css("display", "block");
+
+    var userYear = moment(birthdate).year();
+    var userMonth = moment(birthdate).month() + 1;
+    var userDay = moment(birthdate).date();
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var Month = date.getMonth() + 1;
+    var day = date.getDate();
+
+    if(userYear > year){
+        $("#error").css("display", "block");
+    } else if(userYear == year && userMonth > Month) {
+        $("#error").css("display", "block");
+    } else if (userMonth == Month && userDay > day){
+        $("#error").css("display", "block");
+    } else {
+        $("#error").css("display", "none");
+        $("#bdayQuestion").css("display", "none");
+        $('#cards').css('display', 'block');
+        $("#reset").css("display", "block");
+    }
 })
 
 $("body").on("click", "#usgsCard", function () {
@@ -70,7 +89,6 @@ function earthquakes(date) {
         url: link,
         method: "GET"
     }).then(function(res){
-        console.log(res);
         for( let i = 0; i < res.element_count; i++ ){
             var info = res.near_earth_objects[birthdate][i];
 
