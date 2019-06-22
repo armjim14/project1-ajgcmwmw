@@ -17,7 +17,7 @@ $("body").on("click", "#submit", function () {
         $("#error").css("display", "block");
     } else if(userYear == year && userMonth > Month) {
         $("#error").css("display", "block");
-    } else if (userMonth == Month && userDay > day){
+    } else if (userYear == year && userMonth == Month && userDay > day){
         $("#error").css("display", "block");
     } else {
         $("#error").css("display", "none");
@@ -26,13 +26,13 @@ $("body").on("click", "#submit", function () {
         $("#reset").css("display", "block");
 
         // ajax for gifs starts here
-        var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=10&offset=0&rating=G&lang=en"
+        var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=20&offset=0&rating=G&lang=en"
         $.ajax({
             url: link2,
             method: "GET"
         }).then(function(res){
             $("#nasapic").empty();
-            var ajaxNum = Math.floor(Math.random() * 10);
+            var ajaxNum = Math.floor(Math.random() * 20);
             var gif = res.data[ajaxNum].images.fixed_width.url;
             var newImg = $("<img>").attr("src", gif);
             $("#nasapic").append(newImg);
