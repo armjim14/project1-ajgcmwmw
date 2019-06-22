@@ -39,12 +39,12 @@ $("body").on("click", "#submit", function () {
             url: link2,
             method: "GET"
         }).then(function(res){
-            $("#nasaCard").empty();
+            $("#nasaPic").empty();
             var ajaxNum = Math.floor(Math.random() * 20);
             var gif = res.data[ajaxNum].images.fixed_width.url;
             var newImg = $("<img>").attr("src", gif);
             newImg.attr("id", "image")
-            $("#nasaCard").append(newImg);
+            $("#nasaPic").append(newImg);
         })
         var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=earthquake&limit=20&offset=0&rating=G&lang=en'
         $.ajax({
