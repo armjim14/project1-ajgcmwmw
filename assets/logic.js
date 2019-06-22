@@ -6,77 +6,77 @@ $("body").on("click", "#submit", function () {
     console.log(birthdate);
     var valid = birthdate.search(/....-..-../);
 
-    if ( valid == 0 ){
+    if (valid == 0) {
 
-    var userYear = moment(birthdate).year();
-    var userMonth = moment(birthdate).month() + 1;
-    var userDay = moment(birthdate).date();
+        var userYear = moment(birthdate).year();
+        var userMonth = moment(birthdate).month() + 1;
+        var userDay = moment(birthdate).date();
 
-    // if ( birthdate == "" || userYear == "" || userMonth == "" || userDay == "" ){
-    //     $("#error").css("display", "block");
-    // } else {
+        // if ( birthdate == "" || userYear == "" || userMonth == "" || userDay == "" ){
+        //     $("#error").css("display", "block");
+        // } else {
 
-    var date = new Date();
-    var year = date.getFullYear();
-    var Month = date.getMonth() + 1;
-    var day = date.getDate();
+        var date = new Date();
+        var year = date.getFullYear();
+        var Month = date.getMonth() + 1;
+        var day = date.getDate();
 
-    if(userYear > year){
-        $("#error").css("display", "block");
-    } else if(userYear == year && userMonth > Month) {
-        $("#error").css("display", "block");
-    } else if (userYear == year && userMonth == Month && userDay > day){
-        $("#error").css("display", "block");
+        if (userYear > year) {
+            $("#error").css("display", "block");
+        } else if (userYear == year && userMonth > Month) {
+            $("#error").css("display", "block");
+        } else if (userYear == year && userMonth == Month && userDay > day) {
+            $("#error").css("display", "block");
+        } else {
+            $("#error").css("display", "none");
+            $("#bdayQuestion").css("display", "none");
+            $('#cards').css('display', 'block');
+            $("#reset").css("display", "block");
+
+            // ajax for gifs starts here
+            var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=20&offset=0&rating=G&lang=en"
+            $.ajax({
+                url: link2,
+                method: "GET"
+            }).then(function (res) {
+                $("#nasaCard").empty();
+                var ajaxNum = Math.floor(Math.random() * 20);
+                var gif = res.data[ajaxNum].images.fixed_width.url;
+                var newImg = $("<img>").attr("src", gif);
+                newImg.attr("id", "image")
+                $("#nasaCard").append(newImg);
+            })
+            var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=earthquake&limit=20&offset=0&rating=G&lang=en'
+            $.ajax({
+                url: quakeGif,
+                method: 'GET'
+            }).then(function (resp) {
+                $('#quakeGif').empty();
+                var ajaxNum = Math.floor(Math.random() * 20);
+                var gif = resp.data[ajaxNum].images.fixed_width.url;
+                var newImg = $("<img>").attr("src", gif);
+                newImg.attr('id', 'image');
+                $('#quakeGif').append(newImg);
+            })
+            var nyGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=newspaper&limit=20&offset=0&rating=G&lang=en'
+            $.ajax({
+                url: nyGif,
+                method: 'GET'
+            }).then(function (resp) {
+                $('#nyGif').empty();
+                var ajaxNum = Math.floor(Math.random() * 20);
+                var gif = resp.data[ajaxNum].images.fixed_width.url;
+                var newImg = $("<img>").attr("src", gif);
+                newImg.attr('id', 'image');
+                $('#nyGif').append(newImg);
+            })
+            // ajax for gifs ends here
+
+        }
     } else {
-        $("#error").css("display", "none");
-        $("#bdayQuestion").css("display", "none");
-        $('#cards').css('display', 'block');
-        $("#reset").css("display", "block");
-
-        // ajax for gifs starts here
-        var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=20&offset=0&rating=G&lang=en"
-        $.ajax({
-            url: link2,
-            method: "GET"
-        }).then(function(res){
-            $("#nasaCard").empty();
-            var ajaxNum = Math.floor(Math.random() * 20);
-            var gif = res.data[ajaxNum].images.fixed_width.url;
-            var newImg = $("<img>").attr("src", gif);
-            newImg.attr("id", "image")
-            $("#nasaCard").append(newImg);
-        })
-        var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=earthquake&limit=20&offset=0&rating=G&lang=en'
-        $.ajax({
-            url: quakeGif,
-            method: 'GET'
-        }).then(function(resp){
-            $('#quakeGif').empty();
-            var ajaxNum = Math.floor(Math.random() * 20);
-            var gif = resp.data[ajaxNum].images.fixed_width.url;
-            var newImg = $("<img>").attr("src", gif);
-            newImg.attr('id', 'image');
-            $('#quakeGif').append(newImg);
-        })
-        var nyGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=newspaper&limit=20&offset=0&rating=G&lang=en'
-        $.ajax({
-            url: nyGif,
-            method: 'GET'
-        }).then(function(resp){
-            $('#nyGif').empty();
-            var ajaxNum = Math.floor(Math.random() * 20);
-            var gif = resp.data[ajaxNum].images.fixed_width.url;
-            var newImg = $("<img>").attr("src", gif);
-            newImg.attr('id', 'image');
-            $('#nyGif').append(newImg);
-        })
-        // ajax for gifs ends here
+        $("#error").css("display", "block");
 
     }
-} else {
-    $("#error").css("display", "block");
-
-}
 })
 
 $("body").on("click", "#usgsCard", function () {
@@ -88,7 +88,7 @@ function earthquakes(date) {
     $("#ajaxResults").css("display", "block");
     $("#back").css("display", "block");
     $("#reset").css("display", "block");
-      var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
+    var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
     var eqTableHeaders = $("<thead><tr><th class='mdl-data-table__cell--non-numeric'>Time</th><th class='mdl-data-table__cell--non-numeric'>Location</th><th class='mdl-data-table__cell--non-numeric'>Magnitude</th><th class='mdl-data-table__cell--non-numeric'>Type</th><th class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
     var eqTableBody = $("<tbody>");
 
@@ -121,15 +121,15 @@ function earthquakes(date) {
     })
 }
 
- $("body").on("click", "#nasaCard", function(){
+$("body").on("click", "#nasaCard", function () {
     $("#bdayQuestion").css("display", "none");
     $("#cards").css("display", "none");
     $("#ajaxResults").css("display", "block");
     $("#back").css("display", "block");
     $('#reset').css("display", "block");
     var api = "nzDTlixflJIZcchogN9lZyKGc6qW2V0ElS9qHvAD"
-    var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;    
-  
+    var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;
+
     var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
     var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
     var tbody = $("<tbody id='nasatable'>")
@@ -140,8 +140,8 @@ function earthquakes(date) {
     $.ajax({
         url: link,
         method: "GET"
-    }).then(function(res){
-        for( let i = 0; i < res.element_count; i++ ){
+    }).then(function (res) {
+        for (let i = 0; i < res.element_count; i++) {
             var info = res.near_earth_objects[birthdate][i];
 
             // name given 
@@ -149,7 +149,7 @@ function earthquakes(date) {
 
             // were we in danger?
             var danger = info.is_potentially_hazardous_asteroid;
-            if ( danger == false ){
+            if (danger == false) {
                 danger = "No";
             } else {
                 danger = "Yes";
@@ -157,12 +157,12 @@ function earthquakes(date) {
 
             //miles in diameter
             var size1 = info.estimated_diameter.miles.estimated_diameter_max;
-            var size = size1.toFixed(2)  + " Miles in diameter";
-            
+            var size = size1.toFixed(2) + " Miles in diameter";
+
             //missed distance
             var miss1 = Math.floor(info.close_approach_data[0].miss_distance.miles);
             var miss = correct(miss1) + " Miles";
-            
+
             //speed of it
             var speed1 = Math.ceil(info.close_approach_data[0].relative_velocity.miles_per_hour);
             var speed = correct(speed1) + " MPH";
@@ -177,7 +177,7 @@ function earthquakes(date) {
             }
             items.push(objToItems);
         }
-        for ( let i = 0; i < items.length; i++ ){
+        for (let i = 0; i < items.length; i++) {
             var newitem = items[i]
             var newTr = $("<tr>");
             var nametd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
@@ -191,12 +191,12 @@ function earthquakes(date) {
     })
 })
 
-function correct(num){
+function correct(num) {
     var newnum = num.toString().split("").reverse();
     var arr = [];
     var count = 0;
-    for(let i = 0; i < newnum.length; i++){
-        if( i % 3 == 0 && count !== 0 ){
+    for (let i = 0; i < newnum.length; i++) {
+        if (i % 3 == 0 && count !== 0) {
             arr.push(",");
         }
         arr.push(newnum[i]);
@@ -206,7 +206,7 @@ function correct(num){
     return rarr;
 }
 
-$("body").on("click", "#back", function(){
+$("body").on("click", "#back", function () {
     $("#ajaxResults").empty();
     $("#ajaxResults").css("display", "none");
     $("#cards").css("display", "block");
@@ -214,7 +214,7 @@ $("body").on("click", "#back", function(){
     $("#reset").css("display", "block");
 })
 
-$("body").on("click", "#reset", function(){
+$("body").on("click", "#reset", function () {
     $("#ajaxResults").empty();
     $("form input").val('');
     $("#ajaxResults").css("display", "none");
@@ -234,34 +234,29 @@ $("body").on("click", "#TimesCard", function () {
     $("#reset").css("display", "block");
 
     var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
-    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate +"&api-key=" + api;
-    console.log(link)
-
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&api-key=" + api;
+    var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
+    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Head Line</th><th class='mdl-data-table__cell--non-numeric''>Lead Paragraph</th><th class='mdl-data-table__cell--non-numeric''>URL</th></tr></thead>");
+    var tbody = $("<tbody id='nytable'>");
+    $("#ajaxResults").append(table);
+    table.append(tableH);
+    table.append(tbody);
     $.ajax({
         url: link,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        for(var i = 0; i < response.docs.length; i++){
-            var info = response.docs[birthdate][i];
+    
+        for (var i = 0; i < 10; i++) {
+            var newTR = $("<tr>");
+            var HeadLineTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.response.docs[i].headline.print_headline);
+            var LeadParagraphTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.response.docs[i].lead_paragraph);
+            var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
+            newTR.append(HeadLineTD);
+            newTR.append(LeadParagraphTD);
+            newTR.append(urlTD);
+            table.append(newTR);
         }
     })
-
 })
 
-
-
-    // for (var i = 0; i < response.features.length; i++) {
-    //   if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
-    //     var newTR = $("<tr>");
-    //     var timeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
-    //     var locTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
-    //     var magTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
-    //     var typeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
-    //     var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
-    //     newTR.append(timeTD);
-    //     newTR.append(locTD);
-    //     newTR.append(magTD);
-    //     newTR.append(typeTD);
-    //     newTR.append(urlTD);
-    //     eqTableBody.append(newTR);
