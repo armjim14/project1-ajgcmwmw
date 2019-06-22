@@ -3,10 +3,18 @@ var items = [];
 
 $("body").on("click", "#submit", function () {
     birthdate = $("form input").val();
+    console.log(birthdate);
+    var valid = birthdate.search(/....-..-../);
+
+    if ( valid == 0 ){
 
     var userYear = moment(birthdate).year();
     var userMonth = moment(birthdate).month() + 1;
     var userDay = moment(birthdate).date();
+
+    // if ( birthdate == "" || userYear == "" || userMonth == "" || userDay == "" ){
+    //     $("#error").css("display", "block");
+    // } else {
 
     var date = new Date();
     var year = date.getFullYear();
@@ -36,11 +44,14 @@ $("body").on("click", "#submit", function () {
             var gif = res.data[ajaxNum].images.fixed_width.url;
             var newImg = $("<img>").attr("src", gif);
             $("#nasapic").append(newImg);
-            console.log(gif);
         })
         // ajax for gifs ends here
 
     }
+} else {
+    $("#error").css("display", "block");
+
+}
 })
 
 $("body").on("click", "#usgsCard", function () {
