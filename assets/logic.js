@@ -39,11 +39,12 @@ $("body").on("click", "#submit", function () {
             url: link2,
             method: "GET"
         }).then(function(res){
-            $("#nasapic").empty();
+            $("#nasaCard").empty();
             var ajaxNum = Math.floor(Math.random() * 20);
             var gif = res.data[ajaxNum].images.fixed_width.url;
             var newImg = $("<img>").attr("src", gif);
-            $("#nasapic").append(newImg);
+            newImg.attr("id", "image")
+            $("#nasaCard").append(newImg);
         })
         // ajax for gifs ends here
 
