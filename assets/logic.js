@@ -46,6 +46,30 @@ $("body").on("click", "#submit", function () {
             newImg.attr("id", "image")
             $("#nasaCard").append(newImg);
         })
+        var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=earthquake&limit=20&offset=0&rating=G&lang=en'
+        $.ajax({
+            url: quakeGif,
+            method: 'GET'
+        }).then(function(resp){
+            $('#quakeGif').empty();
+            var ajaxNum = Math.floor(Math.random() * 20);
+            var gif = resp.data[ajaxNum].images.fixed_width.url;
+            var newImg = $("<img>").attr("src", gif);
+            newImg.attr('id', 'image');
+            $('#quakeGif').append(newImg);
+        })
+        var nyGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=newspaper&limit=20&offset=0&rating=G&lang=en'
+        $.ajax({
+            url: nyGif,
+            method: 'GET'
+        }).then(function(resp){
+            $('#nyGif').empty();
+            var ajaxNum = Math.floor(Math.random() * 20);
+            var gif = resp.data[ajaxNum].images.fixed_width.url;
+            var newImg = $("<img>").attr("src", gif);
+            newImg.attr('id', 'image');
+            $('#nyGif').append(newImg);
+        })
         // ajax for gifs ends here
 
     }
