@@ -224,3 +224,44 @@ $("body").on("click", "#reset", function(){
     $("#reset").css("display", "none");
     birthdate = null;
 })
+
+$("body").on("click", "#TimesCard", function () {
+    console.log('hello');
+    $("#bdayQuestion").css("display", "none");
+    $("#cards").css("display", "none");
+    $("#ajaxResults").css("display", "block");
+    $("#back").css("display", "block");
+    $("#reset").css("display", "block");
+
+    var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate +"&api-key=" + api;
+    console.log(link)
+
+    $.ajax({
+        url: link,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        for(var i = 0; i < response.docs.length; i++){
+            var info = response.docs[birthdate][i];
+        }
+    })
+
+})
+
+
+
+    // for (var i = 0; i < response.features.length; i++) {
+    //   if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
+    //     var newTR = $("<tr>");
+    //     var timeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
+    //     var locTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
+    //     var magTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
+    //     var typeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
+    //     var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
+    //     newTR.append(timeTD);
+    //     newTR.append(locTD);
+    //     newTR.append(magTD);
+    //     newTR.append(typeTD);
+    //     newTR.append(urlTD);
+    //     eqTableBody.append(newTR);
