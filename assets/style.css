@@ -47,7 +47,7 @@ body {
     align-items: center;
     justify-content: center;
     float: left;
-    width: 32%;
+    width: 31%;
 }
 
 .cen2 {
@@ -65,4 +65,16 @@ body {
     font-size: 18px;
     color: lightyellow;
     letter-spacing: 1.5px;
+}
+
+@media screen and (max-width: 850px){
+    .cen { float: none; width: 100%; }
+    #cards { width: 97% };
+}
+@media screen and (max-width: 515px){
+    .cen { justify-content: left; width: 100%;}
+    #cards { width: 96% };
+}
+@media screen and (min-width: 840px){
+    .mdl-grid { padding: 8px 0 0 0; }
 }

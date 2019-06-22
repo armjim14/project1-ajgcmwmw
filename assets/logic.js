@@ -24,6 +24,22 @@ $("body").on("click", "#submit", function () {
         $("#bdayQuestion").css("display", "none");
         $('#cards').css('display', 'block');
         $("#reset").css("display", "block");
+
+        // ajax for gifs starts here
+        var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=10&offset=0&rating=G&lang=en"
+        $.ajax({
+            url: link2,
+            method: "GET"
+        }).then(function(res){
+            $("#nasapic").empty();
+            var ajaxNum = Math.floor(Math.random() * 10);
+            var gif = res.data[ajaxNum].images.fixed_width.url;
+            var newImg = $("<img>").attr("src", gif);
+            $("#nasapic").append(newImg);
+            console.log(gif);
+        })
+        // ajax for gifs ends here
+
     }
 })
 
@@ -79,7 +95,7 @@ function earthquakes(date) {
     var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;    
   
     var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Were we in danger?</th></tr></thead>")
+    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
     var tbody = $("<tbody id='nasatable'>")
     $("#ajaxResults").append(table);
     table.append(tableH);
@@ -104,13 +120,16 @@ function earthquakes(date) {
             }
 
             //miles in diameter
-            var size = info.estimated_diameter.miles.estimated_diameter_max + " Miles in diameter";
+            var size1 = info.estimated_diameter.miles.estimated_diameter_max;
+            var size = size1.toFixed(2)  + " Miles in diameter";
             
             //missed distance
-            var miss = Math.floor(info.close_approach_data[0].miss_distance.miles) + " Miles";
+            var miss1 = Math.floor(info.close_approach_data[0].miss_distance.miles);
+            var miss = correct(miss1) + " Miles";
             
             //speed of it
-            var speed = Math.ceil(info.close_approach_data[0].relative_velocity.miles_per_hour) + " MPH";
+            var speed1 = Math.ceil(info.close_approach_data[0].relative_velocity.miles_per_hour);
+            var speed = correct(speed1) + " MPH";
             // Miles from earth to sun is 93 Million Miles
 
             var objToItems = {
@@ -136,6 +155,20 @@ function earthquakes(date) {
     })
 })
 
+function correct(num){
+    var newnum = num.toString().split("").reverse();
+    var arr = [];
+    var count = 0;
+    for(let i = 0; i < newnum.length; i++){
+        if( i % 3 == 0 && count !== 0 ){
+            arr.push(",");
+        }
+        arr.push(newnum[i]);
+        count++;
+    }
+    var rarr = arr.reverse().join("");
+    return rarr;
+}
 
 $("body").on("click", "#back", function(){
     $("#ajaxResults").empty();
