@@ -1,0 +1,121 @@
+$primary: #164059
+$second: #4A8C67
+$background: #0A0D0C
+$font: #4181ad
+
+%border
+    border-color: $second
+    border-style: solid
+    border-width: 1px
+
+%border2
+    border-color: $font
+    border-style: solid
+    border-width: 1px
+
+body
+    background: url('stardust.png')
+    font-family: Acme, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    background-repeat: repeat
+    width: 99%
+
+#bdayQuestion
+    color: $second
+    background: $background
+    display: block
+    position: absolute
+    border-radius: 50%
+    top: 29%
+    width: 50%
+    margin-left: 25%
+
+#bdayform
+    width: 50%
+    left: 25%
+    position: relative
+
+.border
+    padding-left: 5px
+    @extend %border
+
+#submit, .mdl-card__title-text, .mdl-card__supporting-text, #back, #reset
+    color: $second
+
+#error
+    display: none
+    font-family: sans-serif
+    margin-bottom: 0
+    font-size: 18px
+    color: lightyellow
+    letter-spacing: 1.5px
+
+#ajaxResults
+    font-family: 'Times New Roman', Times, serif
+    color: $primary
+    display: none
+
+#back, #reset, #submit
+    background: $background
+    @extend %border
+
+#submit:hover, #back:hover, #reset:hover
+    color: $font
+    @extend %border2
+
+.mdl-card
+    cursor: pointer
+
+#reset
+    display: none
+
+#back
+    float: right
+    display: none
+
+#cards
+    width: 100%
+    display: none
+
+.cen
+    display: flex
+    align-items: center
+    justify-content: center
+    float: left
+    width: 31%
+
+.cen2
+    clear: both
+
+.demo-card-wide
+    background: $background
+
+@media screen and ( max-width: 1200px )
+    #bdayQuestion 
+        width: 70%
+        margin-left: 15%
+
+@media screen and ( max-width: 825px )
+    #bdayQuestion 
+        width: 97%
+        margin-left: 0
+    .cen
+        float: none
+        width: 100%
+    #cards
+        width: 96%
+
+@media screen and ( max-width: 555px )
+    #bdayQuestion 
+        width: 96%
+        margin-left: 0
+    h1
+        font-size: 30px
+    #bdayform
+        left: 5%
+        width: 90%
+    .cen
+        justify-content: left
+
+@media screen and (min-width: 840px)
+    .mdl-grid
+        padding: 8px 0 0 0

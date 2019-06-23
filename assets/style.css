@@ -11,27 +11,30 @@ dark font - #224024
 alt font - #337329
 */
 
-body {
+
+/* body {
     font-family: Acme, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background: url('stardust.png');
     background-repeat: repeat;
-}
+} */
 
-#ajaxResults {
+/* #ajaxResults {
     font-family: 'Times New Roman', Times, serif;
     background: #0A0D0C;
     color: #164059;
     display: none;
-}
-#back, #reset{
+} */
+
+/* #back, #reset{
     background: #164059;
     color: #4A8C67;
-}
-.mdl-card {
-    cursor: pointer;
-}
+} */
 
-#bdayQuestion {
+/* .mdl-card {
+    cursor: pointer;
+} */
+
+/* #bdayQuestion {
     background: #0A0D0C;
     color: #4A8C67;
     display: block;
@@ -44,54 +47,56 @@ body {
     width: 50% !important;
     left: 25%;
     position: relative;
-}
-#cards {
+} */
+
+/* #cards {
     display: none;
     width: 100%;
-}
+} */
 
-#back {
+/* #back {
     float: right;
     display: none;
-}
+} */
 
-#reset {
+/* #reset {
     display: none;
-}
+} */
 
-.cen {
+/* .cen {
     display: flex;
     align-items: center;
     justify-content: center;
     float: left;
     width: 31%;
-}
-.demo-card-wide {
+} */
+/* .demo-card-wide {
     background: #0A0D0C;
-}
+} */
 
-.mdl-card__title-text{
+/* .mdl-card__title-text{
     color: #4A8C67;
 }
 .mdl-card__supporting-text {
     color: #337329;
-}
-.cen2 {
+} */
+
+/* .cen2 {
     clear: both;
-}
+} */
 
-#submit{
+/* #submit{
     color: #4A8C67;
-}
+} */
 
-#error {
+/* #error {
     display: none;
     font-family: sans-serif;
     margin-bottom: 0;
     font-size: 18px;
     color: lightyellow;
     letter-spacing: 1.5px;
-}
+} */
 
 @media screen and (max-width: 850px){
     .cen { float: none; width: 100%; }
