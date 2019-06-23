@@ -3,6 +3,14 @@
     src: url('Acme-regular.ttf');
 }
 
+/* colors  
+primary font - #164059 
+background - #0A0D0C
+secondary font - #4A8C67
+dark font - #224024
+alt font - #337329
+*/
+
 body {
     font-family: Acme, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background: url('stardust.png');
@@ -11,25 +19,34 @@ body {
 
 #ajaxResults {
     font-family: 'Times New Roman', Times, serif;
-    background: lightgray;
-    color: navy;
+    background: #0A0D0C;
+    color: #164059;
     display: none;
 }
 #back, #reset{
-    background: midnightblue;
-    color: beige;
+    background: #164059;
+    color: #4A8C67;
 }
 .mdl-card {
     cursor: pointer;
 }
 
 #bdayQuestion {
-    background: darkcyan;
-    color: lightcyan;
+    background: #0A0D0C;
+    color: #4A8C67;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 29%;
+    width: 100%;
+}
+#bdayForm {
+    width: 50% !important;
+    left: 25%;
+    position: relative;
 }
 #cards {
     display: none;
-    color: forestgreen;
     width: 100%;
 }
 
@@ -49,13 +66,22 @@ body {
     float: left;
     width: 31%;
 }
+.demo-card-wide {
+    background: #0A0D0C;
+}
 
+.mdl-card__title-text{
+    color: #4A8C67;
+}
+.mdl-card__supporting-text {
+    color: #337329;
+}
 .cen2 {
     clear: both;
 }
 
 #submit{
-    color: white;
+    color: #4A8C67;
 }
 
 #error {
