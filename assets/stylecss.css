@@ -99,6 +99,10 @@ body {
   background: #0A0D0C;
 }
 
+#moviesCard:hover .card, #usgsCard:hover .card, #nasaCard:hover .card {
+  color: #4181ad;
+}
+
 @media screen and (max-width: 1200px) {
   #bdayQuestion {
     width: 70%;
