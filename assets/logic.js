@@ -5,14 +5,14 @@ $("body").on("click", "#submit", function () {
     submitClicked();
 })
 
-$("body").on("keyup", function(e){
+$("body").on("keyup", function (e) {
     var code = e.key;
-    if ( code == "Enter" ){
+    if (code == "Enter") {
         submitClicked();
     }
 })
 
-function submitClicked(){
+function submitClicked() {
     birthdate = $("form input").val();
     console.log(birthdate);
     var valid = birthdate.search(/....-..-../);
@@ -45,47 +45,58 @@ function submitClicked(){
             $("#reset").css("display", "block");
 
             // ajax for gifs starts here
-            var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=asteroid&limit=20&offset=0&rating=G&lang=en"
-            $.ajax({
-                url: link2,
-                method: "GET"
-            }).then(function (res) {
-                $("#nasaPic").empty();
-                var ajaxNum = Math.floor(Math.random() * 20);
-                var gif = res.data[ajaxNum].images.fixed_width.url;
-                var newImg = $("<img>").attr("src", gif);
-                newImg.attr("id", "image")
-                $("#nasaPic").append(newImg);
-            })
-            var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=earthquake&limit=20&offset=0&rating=G&lang=en'
-            $.ajax({
-                url: quakeGif,
-                method: 'GET'
-            }).then(function (resp) {
-                $('#quakeGif').empty();
-                var ajaxNum = Math.floor(Math.random() * 20);
-                var gif = resp.data[ajaxNum].images.fixed_width.url;
-                var newImg = $("<img>").attr("src", gif);
-                newImg.attr('id', 'image');
-                $('#quakeGif').append(newImg);
-            })
-            var nyGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=newspaper&limit=20&offset=0&rating=G&lang=en'
-            $.ajax({
-                url: nyGif,
-                method: 'GET'
-            }).then(function (resp) {
-                $('#nyGif').empty();
-                var ajaxNum = Math.floor(Math.random() * 20);
-                var gif = resp.data[ajaxNum].images.fixed_width.url;
-                var newImg = $("<img>").attr("src", gif);
-                newImg.attr('id', 'image');
-                $('#nyGif').append(newImg);
-            })
-            // ajax for gifs ends here
+            gifGenerator();
         }
-    } else {
+        // ajax for gifs ends here
+    }
+    else {
         $("#error").css("display", "block");
     }
+}
+
+function gifGenerator() {
+    var astArr = ['asteroid', 'meteor', 'comet', 'space', 'meteor%20shower', 'cosmos', 'supernova'];
+    var link2 = "https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=" + astArr[Math.floor(Math.random() * astArr.length)] + "&limit=20&offset=0&rating=G&lang=en";
+    console.log(link2);
+    $.ajax({
+        url: link2,
+        method: "GET"
+    }).then(function (res) {
+        $("#nasaPic").empty();
+        var ajaxNum = Math.floor(Math.random() * 20);
+        var gif = res.data[ajaxNum].images.fixed_width.url;
+        var newImg = $("<img>").attr("src", gif);
+        newImg.attr("id", "image")
+        $("#nasaPic").append(newImg);
+    })
+    var quakeArr = ['trembling', 'explosion', 'blast', 'earthquake', 'tremor', 'earthquake%20aftershock', 'earth%20shaking'];
+    var quakeGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=' + quakeArr[Math.floor(Math.random() * quakeArr.length)] + '&limit=20&offset=0&rating=G&lang=en';
+    console.log(quakeGif);
+    $.ajax({
+        url: quakeGif,
+        method: 'GET'
+    }).then(function (resp) {
+        $('#quakeGif').empty();
+        var ajaxNum = Math.floor(Math.random() * 20);
+        var gif = resp.data[ajaxNum].images.fixed_width.url;
+        var newImg = $("<img>").attr("src", gif);
+        newImg.attr('id', 'image');
+        $('#quakeGif').append(newImg);
+    })
+    var nyArr = ['New%20York%20City', 'NYC', 'NY%20Times', 'reading', 'newspaper', 'article', 'skimming', 'reader', 'bookworm', 'times%20square', 'manhattan'];
+    var nyGif = 'https://api.giphy.com/v1/gifs/search?api_key=mlDPhCMeJbeV6rDU6gCS025nk1pBDPgy&q=' + nyArr[Math.floor(Math.random() * nyArr.length)] + '&limit=20&offset=0&rating=G&lang=en';
+    console.log(nyGif);
+    $.ajax({
+        url: nyGif,
+        method: 'GET'
+    }).then(function (resp) {
+        $('#nyGif').empty();
+        var ajaxNum = Math.floor(Math.random() * 20);
+        var gif = resp.data[ajaxNum].images.fixed_width.url;
+        var newImg = $("<img>").attr("src", gif);
+        newImg.attr('id', 'image');
+        $('#nyGif').append(newImg);
+    })
 }
 
 $("body").on("click", "#usgsCard", function () {
@@ -221,6 +232,7 @@ $("body").on("click", "#back", function () {
     $("#cards").css("display", "block");
     $("#back").css("display", "none");
     $("#reset").css("display", "block");
+    gifGenerator();
 })
 
 $("body").on("click", "#reset", function () {
