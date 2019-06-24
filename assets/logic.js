@@ -155,6 +155,7 @@ $("body").on("click", "#nasaCard", function () {
         url: link,
         method: "GET"
     }).then(function (res) {
+        console.log(res.element_count)
         for (let i = 0; i < res.element_count; i++) {
             var info = res.near_earth_objects[birthdate][i];
             // name given 
@@ -185,37 +186,42 @@ $("body").on("click", "#nasaCard", function () {
             }
             items.push(objToItems);
         }
-        if (screen > 700){
-            // more than 700 starts here
-            var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-            var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed Earth By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
-            var tbody = $("<tbody id='nasatable'>")
-            $("#ajaxResults").append(table);
-            table.append(tableH);
-            table.append(tbody);
-            for (let i = 0; i < items.length; i++) {
-                var newitem = items[i]
-                var newTr = $("<tr>");
-                var nametd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
-                var sizetd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
-                var missTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
-                var speedTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
-                var dangtd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
-                newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
-                $("#nasatable").append(newTr);
-            }
-            // more than 700 ends here
+        if ( res.element_count == 0 ){
+            var noinfo = $("<p>").text("There is no info for that day");
+            $("#ajaxResults").append(noinfo);
         } else {
-            var newDL = $("<dl>").css("background", "url('https://media0.giphy.com/media/aGeePr7nv6ra8/giphy.gif')");
-            $("#ajaxResults").append(newDL);
-            for ( let i = 0; i < items.length; i++ ){
-                var newitem = items[i]
-                var newDT = $("<dt>").html("<span class='value'> Name: </span>" + newitem.name);
-                var sizedd = $("<dd>").html("<span class='value'> Miles Wide: </span>" + newitem.length);
-                var missdd = $("<dd>").html("<span class='value'> Missed Earth by: </span>" + newitem.missed)
-                var speeddd = $("<dd>").html("<span class='value'>Speed: </span>" + newitem.velocity + " MPH ");
-                var dangdd = $("<dd>").html("<span class='value'> Was it a hazard: </span>" + newitem.dang);
-                newDL.append(newDT, sizedd, missdd, speeddd, dangdd);
+            if (screen > 700){
+                // more than 700 starts here
+                var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
+                var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed Earth By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
+                var tbody = $("<tbody id='nasatable'>")
+                $("#ajaxResults").append(table);
+                table.append(tableH);
+                table.append(tbody);
+                for (let i = 0; i < items.length; i++) {
+                    var newitem = items[i]
+                    var newTr = $("<tr>");
+                    var nametd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
+                    var sizetd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
+                    var missTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
+                    var speedTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
+                    var dangtd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
+                    newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
+                    $("#nasatable").append(newTr);
+                }
+                // more than 700 ends here
+            } else {
+                var newDL = $("<dl>");//.css("background", "url('https://media0.giphy.com/media/aGeePr7nv6ra8/giphy.gif')");
+                $("#ajaxResults").append(newDL);
+                for ( let i = 0; i < items.length; i++ ){
+                    var newitem = items[i]
+                    var newDT = $("<dt>").html("<span class='value'> Name: </span>" + newitem.name);
+                    var sizedd = $("<dd>").html("<span class='value'> Miles Wide: </span>" + newitem.length);
+                    var missdd = $("<dd>").html("<span class='value'> Missed Earth by: </span>" + newitem.missed + " Miles")
+                    var speeddd = $("<dd>").html("<span class='value'>Speed: </span>" + newitem.velocity + " MPH ");
+                    var dangdd = $("<dd>").html("<span class='value'> Was it a hazard: </span>" + newitem.dang);
+                    newDL.append(newDT, sizedd, missdd, speeddd, dangdd);
+                }
             }
         }
     })
