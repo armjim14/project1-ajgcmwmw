@@ -2,13 +2,13 @@
   font-family: Acme;
   src: url("Acme-regular.ttf");
 }
-#back, #reset, #submit, .border {
+.cardb, #back, #reset, #submit, .border {
   border-color: #4A8C67;
   border-style: solid;
   border-width: 1px;
 }
 
-#submit:hover, #back:hover, #reset:hover {
+.cardb:hover, #submit:hover, #back:hover, #reset:hover {
   border-color: #4181ad;
   border-style: solid;
   border-width: 1px;
@@ -27,9 +27,14 @@ body {
   display: block;
   position: absolute;
   border-radius: 50%;
-  top: 29%;
+  top: 25%;
   width: 50%;
+  height: 370px;
   margin-left: 25%;
+}
+
+h1 {
+  margin-top: 100px;
 }
 
 #bdayform {
@@ -158,6 +163,19 @@ dt {
 
   .cen {
     justify-content: left;
+  }
+
+  .text {
+    font-size: 21px;
+  }
+
+  dl {
+    font-size: 17px;
+    letter-spacing: 1.5px;
+  }
+
+  dd {
+    padding-top: 4px;
   }
 }
 @media screen and (max-width: 840px) {
