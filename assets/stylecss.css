@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Acme;
+  src: url("Acme-regular.ttf");
+}
 #back, #reset, #submit, .border {
   border-color: #4A8C67;
   border-style: solid;
@@ -103,6 +107,18 @@ body {
   color: #4181ad;
 }
 
+dl {
+  color: #5fd291;
+}
+
+dt {
+  padding: 20px 0 0 15px;
+}
+
+.value {
+  color: #91c7ec;
+}
+
 @media screen and (max-width: 1200px) {
   #bdayQuestion {
     width: 70%;
@@ -141,6 +157,15 @@ body {
 
   .cen {
     justify-content: left;
+  }
+}
+@media screen and (max-width: 840px) {
+  .back {
+    width: 50%;
+  }
+
+  .reset {
+    width: 5%;
   }
 }
 @media screen and (min-width: 840px) {

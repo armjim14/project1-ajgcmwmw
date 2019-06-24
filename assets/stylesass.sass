@@ -1,3 +1,7 @@
+@font-face 
+    font-family: Acme
+    src: url('Acme-regular.ttf')
+    
 $primary: #164059
 $second: #4A8C67
 $background: #0A0D0C
@@ -93,8 +97,15 @@ body
     .card
         color: $font
 
-// .card:hover
-//     color: $font
+dl
+    color: #5fd291
+    // background-color: $background
+
+dt
+    padding: 20px 0 0 15px
+
+.value
+    color: #91c7ec
 
 @media screen and ( max-width: 1200px )
     #bdayQuestion 
@@ -122,6 +133,12 @@ body
         width: 90%
     .cen
         justify-content: left
+
+@media screen and ( max-width: 840px )
+    .back
+        width: 50%
+    .reset
+        width: 5%
 
 @media screen and (min-width: 840px)
     .mdl-grid
