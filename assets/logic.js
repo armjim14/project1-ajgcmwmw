@@ -4,6 +4,7 @@ var items = [];
 
 var datte = ["Your Birthday", "Your Anniversary", "Your Favorite holiday", "Your Kids Birthday", "Your Partents Birthday", "Your Dogs Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Todays Date", "Your Cats Birthday", "Your Fishs Birthday", "Yesterdays Date", "A important Date", "A Celebrity Birthday"]
 var last = 0;
+
 setInterval(()=>{
     $("#change").fadeOut(1000, function(){
         var num = Math.floor(Math.random() * datte.length)
@@ -12,12 +13,10 @@ setInterval(()=>{
         if (num == last){
             $("#change").text(datte[num2]);
             $("#change").fadeIn(1000, function(){
-            //   $("#change").text(datte[num2]); 
             })
         } else {
             $("#change").text(datte[num]);
             $("#change").fadeIn(1000, function(){
-                // $("#change").text(datte[num]); 
               })   
         }
     })
