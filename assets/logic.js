@@ -39,9 +39,15 @@ function submitClicked() {
                 $("#error").css("display", "none");
                 $("#bdayQuestion").css("display", "none");
                 $("#reset").css("display", "block");
+                $('body').each(function () {
+                    this.style.pointerEvents = 'none';
+                });
+                gifGenerator();
                 $('#cards').fadeIn(1000, function () {
-                    gifGenerator();
                     $('#cards').css('display', 'block');
+                    $('body').each(function () {
+                        this.style.pointerEvents = 'auto';
+                    });
                 });
 
             }
@@ -259,16 +265,31 @@ function correct(num) {
 }
 
 $("body").on("click", "#back", function () {
-    $("#ajaxResults").empty();
-    $("#ajaxResults").css("display", "none");
-    $("#cards").css("display", "block");
-    $("#back").css("display", "none");
-    $("#reset").css("display", "block");
-    gifGenerator();
+    $('body').each(function () {
+        this.style.pointerEvents = 'none';
+    });
+    $("#ajaxResults").fadeOut(1000, function () {
+        $("#ajaxResults").empty();
+        $("#ajaxResults").css("display", "none");
+        gifGenerator();
+        $("#cards").fadeIn(2500, function () {
+            $("#cards").css("display", "block");
+            $("#back").css("display", "none");
+            $("#reset").css("display", "block");
+            $('body').each(function () {
+                this.style.pointerEvents = 'auto';
+            });
+        })
+    })
+
+
 })
 
 $("body").on("click", "#reset", function () {
     $("form input").val('');
+    $('body').each(function () {
+        this.style.pointerEvents = 'none';
+    });
     $("#ajaxResults").fadeOut(1700, function () {
         $("#ajaxResults").empty();
         $("#ajaxResults").css("display", "none");
@@ -278,6 +299,9 @@ $("body").on("click", "#reset", function () {
         $("#bdayQuestion").fadeIn(1000, function () {
             $("#bdayQuestion").css("display", "block");
             birthdate = null;
+            $('body').each(function () {
+                this.style.pointerEvents = 'auto';
+            });
         })
 
     })
