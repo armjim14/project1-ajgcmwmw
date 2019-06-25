@@ -2,7 +2,7 @@ var birthdate = "";
 var screen = window.innerWidth;
 var items = [];
 
-var datte = ["Your Birthday", "Friday the 13th", "Your Anniversary", "Your Favorite holiday", "Your Kids Birthday", "Your Partents Birthday", "Your Dogs Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Todays Date", "Your Cats Birthday", "Your Fishs Birthday", "Yesterdays Date", "A important Date", "A Celebrity Birthday"]
+var datte = ["Your Birthday", "Friday the 13th", "Your Anniversary", "Your Favorite Holiday", "Your Kid's Birthday", "Your Mom's Birthday", "Your Dad's Birthday", "Your Dog's Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Today's Date", "Your Cat's Birthday", "Your Fish's Birthday", "Yesterday's Date", "An Important Date", "A Celebrity's Birthday", "Your Uncle's Birthday", "Your Cousin's Birthday", "Your Aunt's Birthday", "Your Brother's Birthday", "Your Sister's Birthday", "An Insignificant Date", "A Memorable Day", "An Incredible Day", "Your Ferret's Birthday", "Your Parakeet's Birthday", "Your Lizard's Birthday", "Your Hamster's Birthday"];
 var last = 0;
 
 setInterval(()=>{
@@ -63,6 +63,7 @@ function submitClicked() {
                     this.style.pointerEvents = 'none';
                 });
                 gifGenerator();
+                $('.theDate').text(moment(birthdate).format('MMMM Do, YYYY'));
                 $('#cards').fadeIn(1000, function () {
                     $('#cards').css('display', 'block');
                     $('body').each(function () {
@@ -293,6 +294,7 @@ $("body").on("click", "#back", function () {
         $("#ajaxResults").empty();
         $("#ajaxResults").css("display", "none");
         gifGenerator();
+        $('.theDate').text(moment(birthdate).format('MMMM Do, YYYY'));
         $("#cards").fadeIn(2500, function () {
             $("#cards").css("display", "block");
             $("#back").css("display", "none");
