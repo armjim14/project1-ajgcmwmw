@@ -2,7 +2,7 @@ var birthdate = "";
 var screen = window.innerWidth;
 var items = [];
 
-var datte = ["Your Birthday", "Your Anniversary", "Your Favorite holiday", "Your Kids Birthday", "Your Partents Birthday", "Your Dogs Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Todays Date", "Your Cats Birthday", "Your Fishs Birthday", "Yesterdays Date", "A important Date", "A Celebrity Birthday"]
+var datte = ["Your Birthday", "Friday the 13th", "Your Anniversary", "Your Favorite holiday", "Your Kids Birthday", "Your Partents Birthday", "Your Dogs Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Todays Date", "Your Cats Birthday", "Your Fishs Birthday", "Yesterdays Date", "A important Date", "A Celebrity Birthday"]
 var last = 0;
 
 setInterval(()=>{
