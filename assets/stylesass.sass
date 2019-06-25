@@ -1,0 +1,179 @@
+@font-face 
+    font-family: Acme
+    src: url('Acme-regular.ttf')
+    
+$primary: #164059
+$second: #4A8C67
+$background: #0A0D0C
+$font: #4181ad
+$brightG: #2be192
+
+%border
+    border-color: $brightG
+    border-style: solid
+    border-width: 1px
+
+%border2
+    border-color: $font
+    border-style: solid
+    border-width: 1px
+
+body
+    background: url('stardust.png')
+    font-family: Acme, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    background-repeat: repeat
+    width: 99%
+
+#bdayQuestion
+    color: $second
+    background: url("../assets/bdayback.png")
+    display: block
+    position: absolute
+    border-radius: 100%
+    top: 25%
+    width: 50%
+    height: 370px
+    margin-left: 25%
+    box-shadow: 8px 8px 5px
+    @extend %border
+
+h1
+    margin-top: 100px
+    color: $brightG
+
+tbody
+    background-color: $background
+    color: $brightG
+    font-size: 17px
+
+thead
+    background-color: $background
+
+.mdl-data-table th
+    color: $font !important
+
+#bdayform
+    width: 50%
+    left: 25%
+    position: relative
+
+.border
+    padding-left: 5px
+    color: $brightG
+    @extend %border
+
+#submit, .mdl-card__title-text, .mdl-card__supporting-text, #back, #reset
+    color: $second
+
+#error
+    display: none
+    font-family: sans-serif
+    margin-bottom: 0
+    font-size: 18px
+    color: lightyellow
+    letter-spacing: 1.5px
+
+#ajaxResults
+    font-family: 'Times New Roman', Times, serif
+    color: $primary
+    display: none
+
+#back, #reset, #submit
+    background: $background
+    color: $brightG
+    @extend %border
+
+#submit:hover, #back:hover, #reset:hover
+    color: $font
+    @extend %border2
+
+.mdl-card
+    cursor: pointer
+
+#reset
+    display: none
+
+#back
+    float: right
+    display: none
+
+#cards
+    width: 100%
+    display: none
+
+.cen
+    display: flex
+    align-items: center
+    justify-content: center
+    float: left
+    width: 31%
+
+.cen2
+    clear: both
+
+.demo-card-wide
+    background: $background
+
+#moviesCard:hover, #usgsCard:hover, #nasaCard:hover
+    .card
+        color: $font
+
+.cardb
+    @extend %border
+
+.cardb:hover
+    @extend %border2
+
+dl
+    color: #5fd291
+    background-color: $background
+
+dt
+    padding: 20px 0 0 15px
+
+.value
+    color: #91c7ec
+
+@media screen and ( max-width: 1200px )
+    #bdayQuestion 
+        width: 70%
+        margin-left: 15%
+
+@media screen and ( max-width: 825px )
+    #bdayQuestion 
+        width: 97%
+        margin-left: 0
+    .cen
+        float: none
+        width: 100%
+    #cards
+        width: 96%
+
+@media screen and ( max-width: 555px )
+    #bdayQuestion 
+        width: 95%
+        margin-left: 0
+    h1
+        font-size: 30px
+    #bdayform
+        left: 5%
+        width: 90%
+    .cen
+        justify-content: left
+    .text
+        font-size: 21px
+    dl
+        font-size: 17px
+        letter-spacing: 1.5px
+    dd
+        padding-top: 4px
+
+@media screen and ( max-width: 840px )
+    .back
+        width: 50%
+    .reset
+        width: 5%
+
+@media screen and (min-width: 840px)
+    .mdl-grid
+        padding: 8px 0 0 0
