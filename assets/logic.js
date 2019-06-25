@@ -19,30 +19,33 @@ function submitClicked() {
     var valid = birthdate.search(/....-..-../);
 
     if (valid == 0) {
+        $("#bdayQuestion").fadeOut(1000, function () {
+            var userYear = moment(birthdate).year();
+            var userMonth = moment(birthdate).month() + 1;
+            var userDay = moment(birthdate).date();
 
-        var userYear = moment(birthdate).year();
-        var userMonth = moment(birthdate).month() + 1;
-        var userDay = moment(birthdate).date();
+            var date = new Date();
+            var year = date.getFullYear();
+            var Month = date.getMonth() + 1;
+            var day = date.getDate();
 
-        var date = new Date();
-        var year = date.getFullYear();
-        var Month = date.getMonth() + 1;
-        var day = date.getDate();
+            if (userYear > year || userYear < 1900) {
+                $("#error").css("display", "block");
+            } else if (userYear == year && userMonth > Month) {
+                $("#error").css("display", "block");
+            } else if (userYear == year && userMonth == Month && userDay > day) {
+                $("#error").css("display", "block");
+            } else {
+                $("#error").css("display", "none");
+                $("#bdayQuestion").css("display", "none");
+                $("#reset").css("display", "block");
+                $('#cards').fadeIn(1000, function () {
+                    gifGenerator();
+                    $('#cards').css('display', 'block');
+                });
 
-        if (userYear > year || userYear < 1900) {
-            $("#error").css("display", "block");
-        } else if (userYear == year && userMonth > Month) {
-            $("#error").css("display", "block");
-        } else if (userYear == year && userMonth == Month && userDay > day) {
-            $("#error").css("display", "block");
-        } else {
-            $("#error").css("display", "none");
-            $("#bdayQuestion").css("display", "none");
-            $('#cards').css('display', 'block');
-            $("#reset").css("display", "block");
-
-            gifGenerator();
-        }
+            }
+        })
     }
     else {
         $("#error").css("display", "block");
@@ -140,8 +143,8 @@ function earthquakes(date) {
             else {
                 var newDL = $("<dl>");
                 $("#ajaxResults").append(newDL);
-                for (var i = 0; i < response.features.length; i++){
-                    if(birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')){
+                for (var i = 0; i < response.features.length; i++) {
+                    if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
                         var timeDT = $("<dt>").html("<span class='value'>Time: </span>" + moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
                         var locDD = $("<dd>").html("<span class='value'>Location: </span>" + response.features[i].properties.place);
                         var magDD = $("<dd>").html("<span class='value'>Magnitude: </span>" + response.features[i].properties.mag);
@@ -217,7 +220,7 @@ $("body").on("click", "#nasaCard", function () {
                     var nametd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
                     var sizetd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
                     var missTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
-                    var speedTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
+                    var speedTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity + " MPH");
                     var dangtd = $("<td style='border: lightgray 1px solid;'b class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
                     newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
                     $("#nasatable").append(newTr);
@@ -265,14 +268,19 @@ $("body").on("click", "#back", function () {
 })
 
 $("body").on("click", "#reset", function () {
-    $("#ajaxResults").empty();
     $("form input").val('');
-    $("#ajaxResults").css("display", "none");
-    $("#cards").css("display", "none");
-    $("#bdayQuestion").css("display", "block");
-    $("#back").css("display", "none");
-    $("#reset").css("display", "none");
-    birthdate = null;
+    $("#ajaxResults").fadeOut(1700, function () {
+        $("#ajaxResults").empty();
+        $("#ajaxResults").css("display", "none");
+        $("#cards").css("display", "none");
+        $("#back").css("display", "none");
+        $("#reset").css("display", "none");
+        $("#bdayQuestion").fadeIn(1000, function () {
+            $("#bdayQuestion").css("display", "block");
+            birthdate = null;
+        })
+
+    })
 })
 
 $("body").on("click", "#TimesCard", function () {
@@ -284,11 +292,11 @@ $("body").on("click", "#TimesCard", function () {
     $("#reset").css("display", "block");
 
     var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
-    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;   
-   
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;
+
     $.ajax({
         url: link,
-        method: "GET" 
+        method: "GET"
     }).then(function (response) {
         console.log(response);
         var table = $("<dl>");
@@ -298,7 +306,7 @@ $("body").on("click", "#TimesCard", function () {
             var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
             var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
             table.append(newTR, LeadParagraphTD, urlTD);
-        
+
         }
     })
 })
