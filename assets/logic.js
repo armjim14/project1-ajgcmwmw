@@ -23,11 +23,6 @@ function submitClicked() {
         var userYear = moment(birthdate).year();
         var userMonth = moment(birthdate).month() + 1;
         var userDay = moment(birthdate).date();
-
-        // if ( birthdate == "" || userYear == "" || userMonth == "" || userDay == "" ){
-        //     $("#error").css("display", "block");
-        // } else {
-
         var date = new Date();
         var year = date.getFullYear();
         var Month = date.getMonth() + 1;
@@ -45,10 +40,8 @@ function submitClicked() {
             $('#cards').css('display', 'block');
             $("#reset").css("display", "block");
 
-            // ajax for gifs starts here
             gifGenerator();
         }
-        // ajax for gifs ends here
     }
     else {
         $("#error").css("display", "block");
@@ -117,29 +110,45 @@ function earthquakes(date) {
         method: 'GET'
     }).then(function (response) {
         if (response.features.length == 0) {
-            $("#ajaxResults").html('<h1>'+ "Sorry, there are no results for " + moment(birthdate).format('MMMM Do, YYYY') + "." + '</h1>');
+            $("#ajaxResults").html('<h1>' + "Sorry, there are no results for " + moment(birthdate).format('MMMM Do, YYYY') + "." + '</h1>');
         }
         else {
-            var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-            var eqTableHeaders = $("<thead><tr><th class='mdl-data-table__cell--non-numeric'>Time</th><th class='mdl-data-table__cell--non-numeric'>Location</th><th class='mdl-data-table__cell--non-numeric'>Magnitude</th><th class='mdl-data-table__cell--non-numeric'>Type</th><th class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
-            var eqTableBody = $("<tbody>");
-            $("#ajaxResults").append(eqTable);
-            eqTable.append(eqTableHeaders);
-            eqTable.append(eqTableBody);
-            for (var i = 0; i < response.features.length; i++) {
-                if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
-                    var newTR = $("<tr>");
-                    var timeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
-                    var locTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
-                    var magTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
-                    var typeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
-                    var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
-                    newTR.append(timeTD);
-                    newTR.append(locTD);
-                    newTR.append(magTD);
-                    newTR.append(typeTD);
-                    newTR.append(urlTD);
-                    eqTableBody.append(newTR);
+            if (screen > 700) {
+                var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
+                var eqTableHeaders = $("<thead><tr><th class='mdl-data-table__cell--non-numeric'>Time</th><th class='mdl-data-table__cell--non-numeric'>Location</th><th class='mdl-data-table__cell--non-numeric'>Magnitude</th><th class='mdl-data-table__cell--non-numeric'>Type</th><th class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
+                var eqTableBody = $("<tbody>");
+                $("#ajaxResults").append(eqTable);
+                eqTable.append(eqTableHeaders);
+                eqTable.append(eqTableBody);
+                for (var i = 0; i < response.features.length; i++) {
+                    if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
+                        var newTR = $("<tr>");
+                        var timeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
+                        var locTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
+                        var magTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
+                        var typeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
+                        var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
+                        newTR.append(timeTD);
+                        newTR.append(locTD);
+                        newTR.append(magTD);
+                        newTR.append(typeTD);
+                        newTR.append(urlTD);
+                        eqTableBody.append(newTR);
+                    }
+                }
+            }
+            else {
+                var newDL = $("<dl>");
+                $("#ajaxResults").append(newDL);
+                for (var i = 0; i < response.features.length; i++){
+                    if(birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')){
+                        var timeDT = $("<dt>").html("<span class='value'>Time: </span>" + moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
+                        var locDD = $("<dd>").html("<span class='value'>Location: </span>" + response.features[i].properties.place);
+                        var magDD = $("<dd>").html("<span class='value'>Magnitude: </span>" + response.features[i].properties.mag);
+                        var typeDD = $("<dd>").html("<span class='value'>Type: </span>" + response.features[i].properties.type);
+                        var urlTD = $("<dd>").html("<span class='value'>URL: </span>" + "<a style='word-wrap:break-word' href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
+                        newDL.append(timeDT, locDD, magDD, typeDD, urlTD);
+                    }
                 }
             }
         }
@@ -190,11 +199,11 @@ $("body").on("click", "#nasaCard", function () {
             }
             items.push(objToItems);
         }
-        if ( res.element_count == 0 ){
+        if (res.element_count == 0) {
             var noinfo = $("<p>").text("There is no info for that day");
             $("#ajaxResults").append(noinfo);
         } else {
-            if (screen > 700){
+            if (screen > 700) {
                 // more than 700 starts here
                 var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
                 var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed Earth By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
@@ -208,7 +217,7 @@ $("body").on("click", "#nasaCard", function () {
                     var nametd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
                     var sizetd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
                     var missTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
-                    var speedTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
+                    var speedTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity + " MPH");
                     var dangtd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
                     newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
                     $("#nasatable").append(newTr);
@@ -217,7 +226,7 @@ $("body").on("click", "#nasaCard", function () {
             } else {
                 var newDL = $("<dl>");//.css("background", "url('https://media0.giphy.com/media/aGeePr7nv6ra8/giphy.gif')");
                 $("#ajaxResults").append(newDL);
-                for ( let i = 0; i < items.length; i++ ){
+                for (let i = 0; i < items.length; i++) {
                     var newitem = items[i]
                     var newDT = $("<dt>").html("<span class='value'> Name: </span>" + newitem.name);
                     var sizedd = $("<dd>").html("<span class='value'> Miles Wide: </span>" + newitem.length);
