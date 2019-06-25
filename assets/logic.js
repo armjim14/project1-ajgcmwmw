@@ -2,6 +2,19 @@ var birthdate = "";
 var screen = window.innerWidth;
 var items = [];
 
+var datte = ["Your Birthday", "Your Anniversary", "Your Favorite holiday", "Your Kids Birthday", "Your Partents Birthday", "Your Dogs Birthday", "Your Favorite Date", "A Random Date", "Your Graduation Date", "Todays Date", "Your Cats Birthday", "Your Fishs Birthday", "Yesterdays Date", "A important Date", "A Celebrity Birthday"]
+var last = 0;
+setInterval(()=>{
+    var num = Math.floor(Math.random() * datte.length)
+    last = num;
+    var num2 = Math.floor(Math.random() * datte.length)
+    if (num == last){
+        $("#change").text(datte[num2]);
+    } else {
+        $("#change").text(datte[num]);    
+    }
+}, 3000)
+
 $("body").on("click", "#submit", function () {
     submitClicked();
 })
@@ -296,7 +309,7 @@ $("body").on("click", "#TimesCard", function () {
         for (var i = 0; i < 10; i++) {
             var newTR = $("<dt>").html(response.response.docs[i].headline.main);
             var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
-            var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
+            var urlTD = $("<dd style='word-wrap:break-word'>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
             table.append(newTR, LeadParagraphTD, urlTD);
         
         }
