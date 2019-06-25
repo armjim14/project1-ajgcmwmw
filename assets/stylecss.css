@@ -141,6 +141,10 @@ dt {
 .value {
   color: #91c7ec;
 }
+.mdl-data-table tbody tr:hover {
+  background: #403939;
+}
+
 
 @media screen and (max-width: 1200px) {
   #bdayQuestion {
