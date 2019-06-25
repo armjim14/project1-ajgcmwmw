@@ -145,7 +145,7 @@ function earthquakes(date) {
         else {
             if (screen > 700) {
                 var eqTable = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-                var eqTableHeaders = $("<thead><tr><th class='mdl-data-table__cell--non-numeric'>Time</th><th class='mdl-data-table__cell--non-numeric'>Location</th><th class='mdl-data-table__cell--non-numeric'>Magnitude</th><th class='mdl-data-table__cell--non-numeric'>Type</th><th class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
+                var eqTableHeaders = $("<thead><tr><th style='font-size: 16px;color: #4181ad; border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>Time</th><th style='font-size: 16px;color: #4181ad; border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>Location</th><th style='font-size: 16px;color: #4181ad; border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>Magnitude</th><th style='font-size: 16px;color: #4181ad; border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>Type</th><th style='font-size: 16px;color: #4181ad; border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>URL</th></tr></thead>");
                 var eqTableBody = $("<tbody>");
                 $("#ajaxResults").append(eqTable);
                 eqTable.append(eqTableHeaders);
@@ -153,11 +153,11 @@ function earthquakes(date) {
                 for (var i = 0; i < response.features.length; i++) {
                     if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
                         var newTR = $("<tr>");
-                        var timeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
-                        var locTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
-                        var magTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
-                        var typeTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
-                        var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
+                        var timeTD = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
+                        var locTD = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.place);
+                        var magTD = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.mag);
+                        var typeTD = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(response.features[i].properties.type);
+                        var urlTD = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
                         newTR.append(timeTD);
                         newTR.append(locTD);
                         newTR.append(magTD);
