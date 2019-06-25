@@ -234,28 +234,21 @@ $("body").on("click", "#TimesCard", function () {
     $("#reset").css("display", "block");
 
     var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
-    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;
-    var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-    var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Head Line</th><th class='mdl-data-table__cell--non-numeric''>Lead Paragraph</th><th class='mdl-data-table__cell--non-numeric''>URL</th></tr></thead>");
-    var tbody = $("<tbody id='nytable'>");
-    $("#ajaxResults").append(table);
-    table.append(tableH);
-    table.append(tbody);
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;   
+   
     $.ajax({
         url: link,
-        method: "GET"
+        method: "GET" 
     }).then(function (response) {
         console.log(response);
-    
+        var table = $("<dl>");
+        $("#ajaxResults").append(table);
         for (var i = 0; i < 10; i++) {
-            var newTR = $("<tr>");
-            var HeadLineTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.response.docs[i].headline.main);
-            var LeadParagraphTD = $("<td class='mdl-data-table__cell--non-numeric'>").text(response.response.docs[i].lead_paragraph);
-            var urlTD = $("<td class='mdl-data-table__cell--non-numeric'>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
-            newTR.append(HeadLineTD);
-            newTR.append(LeadParagraphTD);
-            newTR.append(urlTD);
-            table.append(newTR);
+            var newTR = $("<dt>").html(response.response.docs[i].headline.main);
+            var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
+            var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
+            table.append(newTR, LeadParagraphTD, urlTD);
+        
         }
     })
 })
