@@ -205,7 +205,7 @@ $("body").on("click", "#nasaCard", function () {
                     var sizetd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
                     var missTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
                     var speedTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
-                    var dangtd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
+                    var dangtd = $("<td style='border: lightgray 1px solid;'b class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
                     newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
                     $("#nasatable").append(newTr);
                 }
