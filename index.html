@@ -8,7 +8,7 @@
     <title>Project 1 Website</title>
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/material.css">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylecss.css">
 
     <script src="assets/jquery-3.4.1.min.js"></script>
     <script src="assets/moment.js"></script>
@@ -21,9 +21,9 @@
             <h1>Enter your birthday</h1>
         </div>
         <div class="mdl-cell mdl-cell--12-col">
-            <form>
-                <input class="mdl-textfield__input mdl-typography--text-center" type="date"
-                    placeholder="Enter your birthday">
+            <form id="bdayform">
+                <input class="mdl-textfield__input mdl-typography--text-center border" type="date"
+                    placeholder="Enter your birthday" id='bdayForm'>
             </form>
         </div>
         <div class="mdl-cell mdl-cell--12-col">
@@ -38,11 +38,11 @@
     <!-- cards for each API -->
     <div class="mdl-grid center-items" id="cards">
         <div class="mdl-cell mdl-cell--4-col cen">
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="TimesCard">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp cardb" id="TimesCard">
                 <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">NY Times Articles</h2>
+                    <h2 class="mdl-card__title-text card">NY Times Articles</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text card text">
                     See articles from the New York Times that were published on your birthday. 
                 </div>
                 <div class="mdl-card__actions mdl-card--border" id="nyGif">
@@ -50,38 +50,38 @@
             </div>
         </div>
         <div class="mdl-cell mdl-cell--4-col cen">
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="usgsCard">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp cardb" id="usgsCard">
                 <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Earthquakes</h2>
+                    <h2 class="mdl-card__title-text card">Seismic Activity</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                    Look at seismic activity that took place on your birthday by clicking here. Information provided by the USGS API.
+                <div class="mdl-card__supporting-text card text">
+                    Look at earthquakes and other seismic activity that took place on your birthday by clicking here. Information provided by the USGS API.
                 </div>
                     <div class="mdl-card__actions mdl-card--border" id="quakeGif">
                     </div>
             </div>
         </div>
         <div class="mdl-cell mdl-cell--4-col cen">
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp cardb" id="nasaCard">
                 <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Asteroids</h2>
+                    <h2 class="mdl-card__title-text card">Asteroids</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text card text">
                     Want to know how close some Asteroids were on this date? 
                     how big in diameter they were, or if we were
                     even is possible danger?                    
                 </div>
-                <div class="mdl-card__actions mdl-card--border" id="nasaCard">
+                <div class="mdl-card__actions mdl-card--border" id="nasaPic">
                 </div>
             </div>
         </div>
     </div>
     <!-- buttons (back and reset) -->
     <div class="mdl-grid mdl-typography--text-center cen2" id="buttons_backandreset">
-        <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-cell mdl-cell--6-col back">
             <button class="mdl-button" id="back">Back</button>
         </div>
-        <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-cell mdl-cell--6-col reset">
             <button class="mdl-button" id="reset">Reset</button>
         </div>
     </div>
