@@ -152,6 +152,10 @@ dt {
   background-color: #3f3e3e;
 }
 
+#change {
+  text-shadow: 1px 1px 2px black, 0 0 25px seashell, 0 0 5px slategrey;
+}
+
 @media screen and (max-width: 1200px) {
   #bdayQuestion {
     width: 70%;
