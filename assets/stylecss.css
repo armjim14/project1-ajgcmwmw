@@ -39,6 +39,19 @@ h1 {
   color: #2be192;
 }
 
+tbody {
+  background-color: #0A0D0C;
+  color: #2be192;
+}
+
+thead {
+  background-color: #0A0D0C;
+}
+
+.mdl-data-table th {
+  color: #4181ad !important;
+}
+
 #bdayform {
   width: 50%;
   left: 25%;
