@@ -13,7 +13,7 @@ setInterval(()=>{
     } else {
         $("#change").text(datte[num]);    
     }
-}, 3000)
+}, 2000)
 
 $("body").on("click", "#submit", function () {
     submitClicked();
