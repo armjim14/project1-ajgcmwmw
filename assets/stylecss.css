@@ -131,7 +131,7 @@ thead {
   background: #0A0D0C;
 }
 
-#moviesCard:hover .card, #usgsCard:hover .card, #nasaCard:hover .card {
+#TimesCard:hover .card, #usgsCard:hover .card, #nasaCard:hover .card {
   color: #4181ad;
 }
 
