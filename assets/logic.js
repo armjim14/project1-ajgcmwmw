@@ -153,13 +153,14 @@ function earthquakes(date) {
                     if (birthdate == moment(response.features[i].properties.time).format('YYYY-MM-DD')) {
                         var timeDT = $("<dt>").html("<span class='value'>Time: </span>" + moment(response.features[i].properties.time).format('YYYY-MM-DD, hh:mm A'));
                         var locDD = $("<dd>").html("<span class='value'>Location: </span>" + response.features[i].properties.place);
-                        var magDD = $("<dd>").html("<span class='value'>Magnitude: </span>" + response.features[i].properties.mag);
-                        var typeDD = $("<dd>").html("<span class='value'>Type: </span>" + response.features[i].properties.type);
-                        var urlTD = $("<dd>").html("<span class='value'>URL: </span>" + "<a style='word-wrap:break-word' href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
-                        newDL.append(timeDT, locDD, magDD, typeDD, urlTD);
-                    }
-                }
+                    var magDD = $("<dd>").html("<span class='value'>Magnitude: </span>" + response.features[i].properties.mag);
+                    var typeDD = $("<dd>").html("<span class='value'>Type: </span>" + response.features[i].properties.type);
+                    var urlTD = $("<dd>").html("<span class='value'>URL: </span>" + "<a style='word-wrap:break-word' href='" + response.features[i].properties.url + "' target='_blank'>" + response.features[i].properties.url + "</a>");
+                    newDL.append(timeDT, locDD, magDD, typeDD, urlTD);
+                } 
             }
+        
+    }
         }
     })
 }
@@ -227,7 +228,7 @@ $("body").on("click", "#nasaCard", function () {
                     var sizetd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
                     var missTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
                     var speedTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity + " MPH");
-                    var dangtd = $("<td style='border: lightgray 1px solid;'b class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
+                    var dangtd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
                     newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
                     $("#nasatable").append(newTr);
                 }
@@ -316,22 +317,26 @@ $("body").on("click", "#TimesCard", function () {
     $("#reset").css("display", "block");
 
     var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
-    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;
 
-    $.ajax({
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;   
+   
+ $.ajax({
         url: link,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        var table = $("<dl>");
-        $("#ajaxResults").append(table);
-        for (var i = 0; i < 10; i++) {
-            var newTR = $("<dt>").html(response.response.docs[i].headline.main);
-            var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
-            var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
-            table.append(newTR, LeadParagraphTD, urlTD);
-
-        }
-    })
-})
+        if (response.response.docs.length == 0) {
+            $("#ajaxResults").html("<h3 style='color:green'>  Sorry, there are no results for "+ moment(birthdate).format('MMMM Do, YYYY') + ".</h3>");
+        } else {
+            var table = $("<dl>");
+            $("#ajaxResults").append(table);
+            for (var i = 0; i < 10; i++) {
+                var newTR = $("<dt>").html(response.response.docs[i].headline.main);
+                var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
+                var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
+                table.append(newTR, LeadParagraphTD, urlTD);
+            }
+        }        
+    });
+});
 
