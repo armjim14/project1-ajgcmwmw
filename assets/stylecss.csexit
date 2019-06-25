@@ -2,8 +2,8 @@
   font-family: Acme;
   src: url("Acme-regular.ttf");
 }
-.cardb, #back, #reset, #submit, .border, #bdayQuestion {
-  border-color: #2be192;
+.cardb, #back, #reset, #submit, .border {
+  border-color: #4A8C67;
   border-style: solid;
   border-width: 1px;
 }
@@ -23,33 +23,18 @@ body {
 
 #bdayQuestion {
   color: #4A8C67;
-  background: url("../assets/bdayback.png");
+  background: #0A0D0C;
   display: block;
   position: absolute;
-  border-radius: 100%;
+  border-radius: 50%;
   top: 25%;
   width: 50%;
   height: 370px;
   margin-left: 25%;
-  box-shadow: 8px 8px 5px;
 }
 
 h1 {
   margin-top: 100px;
-  color: #2be192;
-}
-
-tbody {
-  background-color: #0A0D0C;
-  color: #2be192;
-}
-
-thead {
-  background-color: #0A0D0C;
-}
-
-.mdl-data-table th {
-  color: #4181ad !important;
 }
 
 #bdayform {
@@ -60,7 +45,6 @@ thead {
 
 .border {
   padding-left: 5px;
-  color: #2be192;
 }
 
 #submit, .mdl-card__title-text, .mdl-card__supporting-text, #back, #reset {
@@ -84,7 +68,6 @@ thead {
 
 #back, #reset, #submit {
   background: #0A0D0C;
-  color: #2be192;
 }
 
 #submit:hover, #back:hover, #reset:hover {
@@ -210,4 +193,4 @@ dt {
   }
 }
 
-/*# sourceMappingURL=stylecss.css.map */
+/*# sourceMappingURL=stylecss.csexit.map */

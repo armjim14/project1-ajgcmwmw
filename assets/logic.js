@@ -206,7 +206,7 @@ $("body").on("click", "#nasaCard", function () {
             if (screen > 700) {
                 // more than 700 starts here
                 var table = $("<table class='mdl-data-table mdl-js-data-table mdl-cell--12-col'>");
-                var tableH = $("<thead><tr><th class='mdl-data-table__cell--non-numeric''>Name</th><th class='mdl-data-table__cell--non-numeric''>Size</th><th class='mdl-data-table__cell--non-numeric''>Missed Earth By</th><th class='mdl-data-table__cell--non-numeric''>Speed</th><th class='mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
+                var tableH = $("<thead><tr><th style='color: #4181ad; border: lightgray 1px solid;' class=' mdl-data-table__cell--non-numeric''>Name</th><th style='color: #4181ad; border: lightgray 1px solid;' class='spec mdl-data-table__cell--non-numeric''>Size</th><th style='color: #4181ad; border: lightgray 1px solid;' class='spec mdl-data-table__cell--non-numeric''>Missed Earth By</th><th style='color: #4181ad; border: lightgray 1px solid;' class='spec mdl-data-table__cell--non-numeric''>Speed</th><th style='color: #4181ad; border: lightgray 1px solid;' class='spec mdl-data-table__cell--non-numeric''>Was it a Hazard?</th></tr></thead>")
                 var tbody = $("<tbody id='nasatable'>")
                 $("#ajaxResults").append(table);
                 table.append(tableH);
@@ -214,11 +214,11 @@ $("body").on("click", "#nasaCard", function () {
                 for (let i = 0; i < items.length; i++) {
                     var newitem = items[i]
                     var newTr = $("<tr>");
-                    var nametd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
-                    var sizetd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
-                    var missTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
-                    var speedTd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity + " MPH");
-                    var dangtd = $("<td class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
+                    var nametd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.name);
+                    var sizetd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.length + " Miles in diameter");
+                    var missTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.missed + " Miles");
+                    var speedTd = $("<td style='border: lightgray 1px solid;' class='mdl-data-table__cell--non-numeric'>").text(newitem.velocity  + " MPH");
+                    var dangtd = $("<td style='border: lightgray 1px solid;'b class='mdl-data-table__cell--non-numeric'>").text(newitem.dang);
                     newTr.append(nametd, sizetd, missTd, speedTd, dangtd);
                     $("#nasatable").append(newTr);
                 }
