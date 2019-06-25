@@ -17,7 +17,7 @@ setInterval(()=>{
         } else {
             $("#change").text(datte[num]);
             $("#change").fadeIn(1000, function(){
-              })   
+            })   
         }
     })
 }, 2000)
@@ -322,4 +322,3 @@ $("body").on("click", "#TimesCard", function () {
         }
     })
 })
-

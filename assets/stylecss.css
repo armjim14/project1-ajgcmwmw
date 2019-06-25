@@ -35,13 +35,19 @@ body {
 }
 
 h1 {
-  margin-top: 100px;
   color: #2be192;
+  margin-top: 0px;
+}
+
+#marup {
+  margin-top: 35px;
+  margin-bottom: 0px;
 }
 
 tbody {
   background-color: #0A0D0C;
   color: #2be192;
+  font-size: 17px;
 }
 
 thead {
@@ -141,10 +147,6 @@ dt {
 .value {
   color: #91c7ec;
 }
-.mdl-data-table tbody tr:hover {
-  background: #403939;
-}
-
 
 @media screen and (max-width: 1200px) {
   #bdayQuestion {
