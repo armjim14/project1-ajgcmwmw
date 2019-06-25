@@ -23,6 +23,7 @@ function submitClicked() {
         var userYear = moment(birthdate).year();
         var userMonth = moment(birthdate).month() + 1;
         var userDay = moment(birthdate).date();
+
         var date = new Date();
         var year = date.getFullYear();
         var Month = date.getMonth() + 1;
@@ -92,7 +93,6 @@ function gifGenerator() {
         $('#nyGif').append(newImg);
     })
 }
-
 $("body").on("click", "#usgsCard", function () {
     earthquakes(birthdate);
 })
@@ -164,11 +164,11 @@ $("body").on("click", "#nasaCard", function () {
     var api = "nzDTlixflJIZcchogN9lZyKGc6qW2V0ElS9qHvAD"
     var link = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + birthdate + "&end_date=" + birthdate + "&api_key=" + api;
 
+
     $.ajax({
         url: link,
         method: "GET"
     }).then(function (res) {
-        console.log(res.element_count)
         for (let i = 0; i < res.element_count; i++) {
             var info = res.near_earth_objects[birthdate][i];
             // name given 
@@ -274,3 +274,32 @@ $("body").on("click", "#reset", function () {
     $("#reset").css("display", "none");
     birthdate = null;
 })
+
+$("body").on("click", "#TimesCard", function () {
+    console.log('hello');
+    $("#bdayQuestion").css("display", "none");
+    $("#cards").css("display", "none");
+    $("#ajaxResults").css("display", "block");
+    $("#back").css("display", "block");
+    $("#reset").css("display", "block");
+
+    var api = 'R1a31F4tBjCUaM2ho8GtIFsrSdtXt30M';
+    var link = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=&begin_date=" + birthdate + '&end_date=' + birthdate + "&fq=document_type(article)&api-key=" + api;   
+   
+    $.ajax({
+        url: link,
+        method: "GET" 
+    }).then(function (response) {
+        console.log(response);
+        var table = $("<dl>");
+        $("#ajaxResults").append(table);
+        for (var i = 0; i < 10; i++) {
+            var newTR = $("<dt>").html(response.response.docs[i].headline.main);
+            var LeadParagraphTD = $("<dd>").html(response.response.docs[i].lead_paragraph);
+            var urlTD = $("<dd>").html("<a href='" + response.response.docs[i].web_url + "' target='_blank'>" + response.response.docs[i].web_url + "</a>");
+            table.append(newTR, LeadParagraphTD, urlTD);
+        
+        }
+    })
+})
+
